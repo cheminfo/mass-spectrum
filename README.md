@@ -14,9 +14,11 @@ Read different formats and unify the format.
 ## Usage
 
 ```js
-import IVSpectrum from 'mass-spectrum';
+import MassSpectrum from 'mass-spectrum';
 
-let analysis = IVSpectrum.fromJcamp(jcamp);
+let analysis = MassSpectrum.fromJcamp(jcamp);
+
+let analysis2 = MassSpectrum.fromText(textFile);
 ```
 
 ## License

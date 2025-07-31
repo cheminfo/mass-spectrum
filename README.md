@@ -5,7 +5,7 @@
 [![Test coverage][codecov-image]][codecov-url]
 [![npm download][download-image]][download-url]
 
-Read different formats and unify the format.
+Helper to visualize and compare mass spectra in SciPeaks.
 
 ## Installation
 
@@ -14,11 +14,10 @@ Read different formats and unify the format.
 ## Usage
 
 ```js
-import MassSpectrum from 'mass-spectrum';
+import { myModule } from 'mass-spectrum';
 
-let analysis = MassSpectrum.fromJcamp(jcamp);
-
-let analysis2 = MassSpectrum.fromText(textFile);
+const result = myModule(args);
+// result is ...
 ```
 
 ## License
@@ -27,7 +26,7 @@ let analysis2 = MassSpectrum.fromText(textFile);
 
 [npm-image]: https://img.shields.io/npm/v/mass-spectrum.svg
 [npm-url]: https://www.npmjs.com/package/mass-spectrum
-[ci-image]: https://github.com/cheminfo/mass-spectrum/workflows/Node.js%20CI/badge.svg?branch=master
+[ci-image]: https://github.com/cheminfo/mass-spectrum/workflows/Node.js%20CI/badge.svg?branch=main
 [ci-url]: https://github.com/cheminfo/mass-spectrum/actions?query=workflow%3A%22Node.js+CI%22
 [codecov-image]: https://img.shields.io/codecov/c/github/cheminfo/mass-spectrum.svg
 [codecov-url]: https://codecov.io/gh/cheminfo/mass-spectrum

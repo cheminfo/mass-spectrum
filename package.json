@@ -1,10 +1,9 @@
 {
   "name": "mass-spectrum",
   "version": "0.0.2",
-  "description": "mass-spectrum allows to convert mass spectra to JCAMP-DX.",
-  "main": "./lib/index.js",
-  "module": "./lib-esm/index.js",
-  "types": "./lib/index.d.ts",
+  "description": "Helper to visualize and compare mass spectra in SciPeaks",
+  "type": "module",
+  "exports": "./lib/index.js",
   "keywords": [
     "parser",
     "chemistry",
@@ -15,22 +14,21 @@
   "license": "MIT",
   "files": [
     "src",
-    "lib",
-    "lib-esm"
+    "lib"
   ],
   "scripts": {
     "build": "npm run tsc && cheminfo-build -r MassSpectrum",
-    "build-doc": "cheminfo doc",
-    "clean": "rimraf lib lib-esm",
-    "eslint": "eslint src --ext ts --cache",
+    "check-types": "tsc --noEmit",
+    "clean": "rimraf lib",
+    "eslint": "eslint src --cache",
     "eslint-fix": "npm run eslint -- --fix",
-    "prepublishOnly": "npm run tsc",
-    "test": "npm run test-coverage && npm run eslint",
-    "test-coverage": "npm run test-only -- --coverage",
-    "test-only": "jest",
-    "tsc": "npm run clean && npm run tsc-cjs && npm run tsc-esm",
-    "tsc-cjs": "tsc --project tsconfig.cjs.json",
-    "tsc-esm": "tsc --project tsconfig.esm.json"
+    "prepack": "npm run tsc",
+    "prettier": "prettier --check src",
+    "prettier-write": "prettier --write src",
+    "test": "npm run test-only && npm run eslint && npm run prettier && npm run check-types",
+    "test-only": "vitest --run --coverage",
+    "tsc": "npm run clean && npm run tsc-build",
+    "tsc-build": "tsc --project tsconfig.build.json"
   },
   "repository": {
     "type": "git",
@@ -40,22 +38,23 @@
     "url": "https://github.com/cheminfo/mass-spectrum/issues"
   },
   "homepage": "https://github.com/cheminfo/mass-spectrum#readme",
-  "jest": {
-    "preset": "ts-jest",
-    "testEnvironment": "node"
-  },
-  "prettier": {
-    "arrowParens": "always",
-    "semi": true,
-    "singleQuote": true,
-    "tabWidth": 2,
-    "trailingComma": "all"
+  "devDependencies": {
+    "@types/node": "^24.1.0",
+    "@vitest/coverage-istanbul": "^3.2.4",
+    "@zakodium/tsconfig": "^1.0.2",
+    "cheminfo-build": "^1.2.1",
+    "cheminfo-types": "^1.8.1",
+    "eslint": "^9.32.0",
+    "eslint-config-cheminfo-typescript": "^19.0.0",
+    "prettier": "^3.6.2",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
   },
   "dependencies": {
-    "common-spectrum": "^0.30.1",
-    "mzdata": "^2.1.0",
-    "ndim-parser": "^0.4.0",
-    "xy-parser": "^3.1.1"
+    "common-spectrum": "^2.12.0",
+    "ensure-string": "^1.2.0",
+    "xy-parser": "^5.0.5"
   },
   "devDependencies": {
     "@types/d3-scale": "^3.2.2",

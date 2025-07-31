@@ -1,17 +1,14 @@
+import type { TextData } from 'cheminfo-types';
 import { Analysis } from 'common-spectrum';
-// @ts-ignore
-import { parseXY } from 'xy-parser';
+import { ensureString } from 'ensure-string';
+import { parseXYAndKeepInfo } from 'xy-parser';
 
-export function fromText(text: string | ArrayBufferView, options: any = {}) {
+export function fromText(blob: TextData, options: any = {}) {
+  const text = ensureString(blob);
   const { title } = options;
-  if (ArrayBuffer.isView(text)) {
-    let decoder = new TextDecoder('utf8');
-    text = decoder.decode(text);
-  }
 
-  const { data, info } = parseXY(text, {
+  const { data, info } = parseXYAndKeepInfo(text, {
     bestGuess: true,
-    keepInfo: true,
     ...options,
   });
 
@@ -27,10 +24,13 @@ export function fromText(text: string | ArrayBufferView, options: any = {}) {
       label: 'Relative intensity',
     },
   };
-  let meta = {};
+  const meta: Record<string, any> = {};
   let index = 1;
-  // @ts-ignore
-  info.forEach((line: any) => (meta[`Info ${index++}`] = line.value));
+
+  for (const item of info) {
+    meta[`Info ${index++}`] = item.value;
+  }
+
   const analysis = new Analysis();
   analysis.pushSpectrum(spectrum, {
     dataType: 'MASS SPECTRUM',

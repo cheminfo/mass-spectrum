@@ -1,9 +1,9 @@
 export {
-  Analysis,
   AnalysesManager,
+  Analysis,
+  JSGraph,
   fromJcamp,
   toJcamp,
-  JSGraph,
 } from 'common-spectrum';
 
-export { fromText } from './from/fromText';
+export { fromText } from './from/fromText.ts';

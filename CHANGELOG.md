@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/cheminfo/mass-spectrum/compare/v1.1.0...v1.2.0) (2025-08-08)
+
+
+### Features
+
+* add manual peak picking ([5c0c51e](https://github.com/cheminfo/mass-spectrum/commit/5c0c51eea60a217fd47de356e9b93e941765778f))
+
 ## [1.1.0](https://github.com/cheminfo/mass-spectrum/compare/v1.0.0...v1.1.0) (2025-08-08)
 
 

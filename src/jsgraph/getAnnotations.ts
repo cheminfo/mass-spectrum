@@ -127,10 +127,10 @@ function annotationPeak(
       position: {
         x: peak.mass,
         y: peak.intensity,
-        dy: `${shiftY - line * 14}px`,
+        dy: `${shiftY - 3 - line * 14}px`,
       },
     });
-    line++;
+    // line++; // it it the last one we do not increase the line number
   }
 
   annotation.labels = labels;
@@ -138,13 +138,13 @@ function annotationPeak(
     {
       x: peak.mass,
       y: peak.intensity,
-      dy: '-2px',
+      dy: '-1px',
       dx: '-1px',
     },
     {
       x: peak.mass,
       y: peak.intensity,
-      dy: '-25px',
+      dy: `-${3 + line * 14}px`,
       dx: '1px',
     },
   ];

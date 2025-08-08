@@ -1,5 +1,8 @@
 import type { MeasurementXY } from 'cheminfo-types';
-import { JSGraph as OriginalJSGraph } from 'common-spectrum';
+import {
+  JSGraph as OriginalJSGraph,
+  peakPicking as originalPeakPicking,
+} from 'common-spectrum';
 import { xyObjectNormedY } from 'ml-spectra-processing';
 import { Spectrum } from 'ms-spectrum';
 
@@ -28,6 +31,19 @@ export function autoPeakPicking(spectrum: MeasurementXY, options = {}) {
       intensity: peak.y,
     };
   });
+}
+
+export function peakPicking(
+  spectrum: MeasurementXY,
+  target: number,
+  options: any,
+) {
+  const peak = originalPeakPicking(spectrum, target, options);
+  if (!peak) return undefined;
+  return {
+    mass: peak.x,
+    intensity: peak.y,
+  };
 }
 
 export const JSGraph: typeof OriginalJSGraph & {

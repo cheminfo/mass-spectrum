@@ -3,6 +3,8 @@ import { Analysis } from 'common-spectrum';
 import { ensureString } from 'ensure-string';
 import { parseXYAndKeepInfo } from 'xy-parser';
 
+import { spectrumCallback } from './utils/spectrumCallback.ts';
+
 export function fromText(blob: TextData, options: any = {}) {
   const text = ensureString(blob);
   const { title } = options;
@@ -31,7 +33,9 @@ export function fromText(blob: TextData, options: any = {}) {
     meta[`Info ${index++}`] = item.value;
   }
 
-  const analysis = new Analysis();
+  const analysis = new Analysis({
+    spectrumCallback,
+  });
   analysis.pushSpectrum(spectrum, {
     dataType: 'MASS SPECTRUM',
     title,

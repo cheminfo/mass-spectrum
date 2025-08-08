@@ -7,7 +7,7 @@ import { fromJcamp } from '../../index.ts';
 
 test('fromJcamp', () => {
   const jcamp = readFileSync(
-    join(import.meta.dirname, './testFiles/mass.jdx'),
+    join(import.meta.dirname, '../../__tests__/data/mass.jdx'),
     'utf8',
   );
   const analysis = fromJcamp(jcamp);

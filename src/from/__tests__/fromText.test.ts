@@ -8,7 +8,7 @@ import { fromText } from '../fromText.ts';
 describe('fromText', () => {
   it('mass1.txt', () => {
     const text = readFileSync(
-      join(import.meta.dirname, './testFiles/mass1.txt'),
+      join(import.meta.dirname, '../../__tests__/data/mass1.txt'),
     );
     const analysis = fromText(text, {
       title: 'This is the title',
@@ -28,7 +28,7 @@ describe('fromText', () => {
 
   it('mass2.csv', () => {
     const text = readFileSync(
-      join(import.meta.dirname, './testFiles/mass2.csv'),
+      join(import.meta.dirname, '../../__tests__/data/mass2.csv'),
     );
     const analysis = fromText(text, {
       title: 'This is the title',
@@ -48,7 +48,7 @@ describe('fromText', () => {
 
   it('mass3.asc', () => {
     const text = readFileSync(
-      join(import.meta.dirname, './testFiles/mass3.asc'),
+      join(import.meta.dirname, '../../__tests__/data/mass3.asc'),
     );
     const analysis = fromText(text, {
       title: 'This is the title',
@@ -68,7 +68,7 @@ describe('fromText', () => {
 
   it('mass4.spectrum', () => {
     const text = readFileSync(
-      join(import.meta.dirname, './testFiles/mass4.spectrum'),
+      join(import.meta.dirname, '../../__tests__/data/mass4.spectrum'),
     );
     const analysis = fromText(text, {
       title: 'This is the title',

@@ -54,6 +54,8 @@
   "dependencies": {
     "common-spectrum": "^3.0.0",
     "ensure-string": "^1.2.0",
+    "ml-spectra-processing": "^14.15.0",
+    "ms-spectrum": "^3.9.1",
     "xy-parser": "^5.0.5"
   },
   "cheminfo": {
@@ -73,12 +75,12 @@
         {
           "extension": "spectrum",
           "manufacturer": "Bruker (solariX)",
-          "example": "https://raw.githubusercontent.com/kjappelbaum/mass-spectrum/master/testFiles/mass4.spectrum"
+          "example": "https://raw.githubusercontent.com/kjappelbaum/mass-spectrum/main/__tests__/data/mass4.spectrum"
         },
         {
           "extension": "jdx",
           "manufacturer": "cheminfo",
-          "example": "https://raw.githubusercontent.com/kjappelbaum/mass-spectrum/master/testFiles/mass.jdx"
+          "example": "https://raw.githubusercontent.com/kjappelbaum/mass-spectrum/main/__tests__/data/mass.jdx"
         }
       ]
     }

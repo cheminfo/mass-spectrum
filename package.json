@@ -1,6 +1,6 @@
 {
   "name": "mass-spectrum",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Helper to visualize and compare mass spectra in SciPeaks",
   "type": "module",
   "exports": "./lib/index.js",

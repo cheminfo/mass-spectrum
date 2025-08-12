@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/cheminfo/mass-spectrum/compare/v1.2.1...v1.3.0) (2025-08-12)
+
+
+### Features
+
+* add default values for auto peak picking and fix height of peak picking if zoomed ([2c16ac7](https://github.com/cheminfo/mass-spectrum/commit/2c16ac7a576dda8dd5f09323ef27375feffe49ed))
+
 ## [1.2.1](https://github.com/cheminfo/mass-spectrum/compare/v1.2.0...v1.2.1) (2025-08-12)
 
 

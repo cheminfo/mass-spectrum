@@ -3,7 +3,7 @@ import {
   JSGraph as OriginalJSGraph,
   peakPicking as originalPeakPicking,
 } from 'common-spectrum';
-import { xyObjectNormedY } from 'ml-spectra-processing';
+import { xyMaxY, xyObjectNormedY } from 'ml-spectra-processing';
 import { Spectrum } from 'ms-spectrum';
 
 import { getAnnotations } from './jsgraph/getAnnotations.ts';
@@ -14,21 +14,35 @@ export { fromText } from './from/fromText.ts';
 export { fromJcamp } from './from/fromJcamp.ts';
 
 export function autoPeakPicking(spectrum: MeasurementXY, options = {}) {
+  options = {
+    threshold: 0.1,
+    numberSlots: 20,
+    numberCloseSlots: 40,
+    ...options,
+  };
   const data = {
     x: spectrum.variables.x.data,
     y: spectrum.variables.y.data,
   };
 
   const msSpectrum = new Spectrum(data);
-  const peaks = xyObjectNormedY(
-    msSpectrum.getBestPeaks(options).filter((peak) => !peak.close),
-    { value: 100, algorithm: 'max' },
-  );
+  // we need to know the global best peaks to know his intensity and set it to 100
+  const minMaxX = msSpectrum.minMaxX();
+  const maxY = msSpectrum
+    .getBestPeaks({
+      ...options,
+      from: minMaxX.min,
+      to: minMaxX.max,
+    })
+    .sort((a, b) => b.y - a.y)[0]?.y;
+  const maxRatio = maxY ? 100 / maxY : 1;
+
+  const peaks = msSpectrum.getBestPeaks(options);
 
   return peaks.map((peak) => {
     return {
       mass: peak.x,
-      intensity: peak.y,
+      intensity: peak.y * maxRatio,
     };
   });
 }

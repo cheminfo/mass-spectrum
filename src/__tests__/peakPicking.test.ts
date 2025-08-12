@@ -16,7 +16,7 @@ test('Peak Picking from JCAMP-DX. We ensure max peak intensity is 100', () => {
   // Perform peak picking
   const peaks = autoPeakPicking(spectrum);
 
-  expect(peaks).toHaveLength(8);
+  expect(peaks).toHaveLength(4);
 
   const maxIntensity = Math.max(...peaks.map((peak) => peak.intensity));
 

@@ -3,7 +3,6 @@ import {
   JSGraph as OriginalJSGraph,
   peakPicking as originalPeakPicking,
 } from 'common-spectrum';
-import { xyMaxY, xyObjectNormedY } from 'ml-spectra-processing';
 import { Spectrum } from 'ms-spectrum';
 
 import { getAnnotations } from './jsgraph/getAnnotations.ts';

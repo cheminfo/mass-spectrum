@@ -33,12 +33,17 @@ export function autoPeakPicking(spectrum: MeasurementXY, options = {}) {
   });
 }
 
-export function peakPicking(
-  spectrum: MeasurementXY,
-  target: number,
-  options: any,
-) {
-  const peak = originalPeakPicking(spectrum, target, options);
+export function peakPicking(spectrum: MeasurementXY, target: number) {
+  const peak = originalPeakPicking(spectrum, target, {
+    xVariable: 'x',
+    yVariable: 'y',
+    optimize: false,
+    // we could optimize the peaks but it depends of the width
+    // and also if it is continuous or not. Not obvious
+    // if we optimize we need to add this parameters for high res spectrum
+    //   shape: { kind: 'gaussian', fwhm: 0.01 },
+    max: true,
+  });
   if (!peak) return undefined;
   return {
     mass: peak.x,
